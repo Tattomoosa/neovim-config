@@ -34,13 +34,18 @@ if dein#load_state('~/.config/nvim/plugins/')
 	call dein#add('carlitux/deoplete-ternjs')
 	call dein#add('ternjs/tern_for_vim.git')
 	call dein#add('ervandew/supertab')
+	call dein#add('jiangmiao/auto-pairs')
+	call dein#add('docunext/closetag.vim')
 	" display
 	call dein#add('ap/vim-css-color')
+	call dein#add('blueyed/vim-diminactive')
 	" colorschemes
 	call dein#add('morhetz/gruvbox')
 	" comments
 	call dein#add('tpope/vim-commentary')
-
+	" formatting
+	call dein#add('junegunn/vim-easy-align')
+	call dein#add('chiel92/vim-autoformat')
   " Required:
   call dein#end()
   call dein#save_state()
@@ -71,6 +76,9 @@ let g:tern#filetypes = [
 
 "ctrl p
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*
+
+"closetag
+:au Filetype html,xml,xsl,jsx source ~/.config/nvim/plugins/repos/github.com/docunext/closetag.vim/plugin/closetag.vim
 
 source $HOME/.config/nvim/settings.vim
 source $HOME/.config/nvim/remaps.vim

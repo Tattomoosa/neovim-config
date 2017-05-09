@@ -11,6 +11,5 @@ nnoremap ]b :bnext<CR>
 
 " insert mode
 
-
 " plugin mappings
 map <C-n> :NERDTreeToggle<CR>
