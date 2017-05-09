@@ -4,15 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/mattotousa/.config/nvim/plugins/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.config/nvim/plugins/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/mattotousa/.config/nvim/plugins/')
-  call dein#begin('/Users/mattotousa/.config/nvim/plugins/')
+if dein#load_state('~/.config/nvim/plugins/')
+  call dein#begin('~/.config/nvim/plugins/')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/mattotousa/.config/nvim/plugins/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/plugins/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
 	" movement
