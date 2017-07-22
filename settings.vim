@@ -13,7 +13,7 @@ set number
 
 " cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+" set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " autocomplete
 set wildmenu

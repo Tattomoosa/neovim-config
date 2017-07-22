@@ -19,7 +19,7 @@ if dein#load_state('~/.config/nvim/plugins/')
 	call dein#add('justinmk/vim-sneak')
 	" syntax
 	call dein#add('pangloss/vim-javascript')
-	call dein#add('mxw/vim-jsx')
+	call dein#add('chemzqm/vim-jsx-improve')
 	call dein#add('elzr/vim-json')
 	call dein#add('cakebaker/scss-syntax.vim')
 	" other
