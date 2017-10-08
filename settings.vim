@@ -30,6 +30,13 @@ set ignorecase
 set smartcase
 set hlsearch
 
+" don't beep
+set visualbell
+set noerrorbells
+
+" set terminal's title
+set title
+
 if has("termguicolors")
   set termguicolors
 endif
@@ -70,6 +77,7 @@ set splitright
 "indenting
 set autoindent
 set smartindent
+set smarttab
 
 " wrapping and stuff
 set showbreak=\ ↳\ ↳\ ↳\ 
@@ -79,5 +87,11 @@ set nolist
 set wrap
 set linebreak breakat&vim
 
+set list
+set listchars=tab:\|\ ,trail:X
+
 " puts return character in numberline
 set cpo=n
+
+" enable fenced code block syntax highlighting in markdown
+let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript']
