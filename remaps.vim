@@ -4,14 +4,33 @@
 
 let mapleader = "\<Space>"
 " normal mode - leader
-" increment a single digit ?? to hex??
-"
+
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
-nnoremap <leader>y gg"*yG``
+nnoremap <leader>Y gg"+yG``
 
 nnoremap <leader>w :wall<CR>
+
+nnoremap <leader>h <C-W>h
+nnoremap <leader>j <C-W>j
+nnoremap <leader>k <C-W>k
+nnoremap <leader>l <C-W>l
+
+nnoremap <leader>L <C-W>v
+nnoremap <leader>J <C-W>s
+
+" blank lines
+nnoremap <leader>o o<esc>
+nnoremap <leader>O O<esc>
+
+" toggle comments in NERDCommenter
+" nmap <leader><leader> <Plug>NERDCommenterToggle
+
+
+let g:minimap_toggle='<leader>m'
+
+nnoremap va ggVG
 
 """"""""""""""""""""""""""""""""""""""""
 " NORMAL MODE
@@ -28,9 +47,6 @@ nnoremap ]b :bnext<CR>
 " tabs
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
-" blank lines
-nnoremap <Enter> o<esc>
-nnoremap <S-Enter> O<esc>
 
 """"""""""""""""""""""""""""""""""""""""
 " INSERT MODE

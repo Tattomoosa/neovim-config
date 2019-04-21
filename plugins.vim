@@ -20,9 +20,11 @@ if dein#load_state('~/.config/nvim/plugins/')
 	call dein#add('tmhedberg/matchit')
 	" syntax
 	call dein#add('pangloss/vim-javascript')
+	call dein#add('othree/html5.vim')
 	call dein#add('posva/vim-vue')
 	call dein#add('chemzqm/vim-jsx-improve')
 	call dein#add('elzr/vim-json')
+  call dein#add('rust-lang/rust.vim')
 	" call dein#add('othree/jspc.vim')
 	call dein#add('cakebaker/scss-syntax.vim')
 	" other
@@ -32,7 +34,7 @@ if dein#load_state('~/.config/nvim/plugins/')
 	call dein#add('airblade/vim-gitgutter')
 	call dein#add('tpope/vim-fugitive')
 	" changes working directory to project route
-	call dein#add('airblade/vim-rooter')
+	" call dein#add('airblade/vim-rooter')
 	" completion
 	call dein#add('Shougo/deoplete.nvim')
 	call dein#add('carlitux/deoplete-ternjs')
@@ -46,8 +48,12 @@ if dein#load_state('~/.config/nvim/plugins/')
 	" colorschemes
 	call dein#add('morhetz/gruvbox')
 	" comments
-	call dein#add('tpope/vim-commentary')
+	" call dein#add('tpope/vim-commentary')
+  call dein#add('scrooloose/nerdcommenter')
+	" surround
 	call dein#add('tpope/vim-surround')
+	" minimap
+	" call dein#add('severin-lemaignan/vim-minimap')
 	" formatting
 	" call dein#add('junegunn/vim-easy-align')
 	" call dein#add('chiel92/vim-autoformat')
@@ -85,4 +91,32 @@ set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/node_modules/*
 
 "closetag
 :au Filetype html,xml,xsl,jsx source ~/.config/nvim/plugins/repos/github.com/docunext/closetag.vim/plugin/closetag.vim
+
+" disable all gitgutter mappings
+let g:gitgutter_map_keys = 0
+
+" customize NERDCommenter
+let g:NERDSpaceDelims = 1
+
+" commenting functions in .Vue files
+let g:ft = ''
+fu! NERDCommenter_before()
+  if &ft == 'vue'
+    let g:ft = 'vue'
+    let stack = synstack(line('.'), col('.'))
+    if len(stack) > 0
+      let syn = synIDattr((stack)[0], 'name')
+      if len(syn) > 0
+        let syn = tolower(syn)
+        exe 'setf '.syn
+      endif
+    endif
+  endif
+endfu
+fu! NERDCommenter_after()
+  if g:ft == 'vue'
+    setf vue
+    g:ft
+  endif
+endfu
 
