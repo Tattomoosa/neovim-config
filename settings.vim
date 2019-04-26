@@ -2,7 +2,7 @@
 syntax enable filetype plugin on
 filetype indent on
 
-" mouse on macosx
+" use mouse
 set mouse=a
 " tabs
 set tabstop=2
@@ -47,12 +47,12 @@ if has("termguicolors")
   set termguicolors
 endif
 
-colorscheme gruvbox 
+colorscheme gruvbox
 set background=dark
 
 highlight CWD ctermfg=grey ctermbg=black guibg=#504945 guifg=#000000 gui=bold
 highlight File ctermfg=red ctermbg=black guibg=#504945 guifg=#cbe1b1
- 
+
 highlight ColorColumn ctermbg=black guibg=#706965
 
 highlight lineNr guibg=#504945 guifg=grey
@@ -61,6 +61,7 @@ highlight CursorLineNr guibg=#222222 guifg=white gui=bold
 " less obtrusive search highlighting
 highlight Search ctermbg=none ctermfg=red cterm=italic,underline gui=bold,underline guibg=#555599 guifg=white
 
+highlight Normal ctermbg=NONE guibg=NONE
 
 " statusline
 set statusline=%#CWD#
@@ -84,6 +85,7 @@ set splitright
 set autoindent
 set smartindent
 set smarttab
+set expandtab
 
 " wrapping and stuff
 set showbreak=\ ↳\ ↳\ ↳\ 

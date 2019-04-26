@@ -4,12 +4,11 @@
 
 let mapleader = "\<Space>"
 " normal mode - leader
-" increment a single digit ?? to hex??
-"
+
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
-nnoremap <leader>y gg"*yG``
+nnoremap <leader>Y gg"+yG``
 nnoremap <leader>w :wall<CR>
 
 """"""""""""""""""""""""""""""""""""""""
@@ -27,9 +26,6 @@ nnoremap ]b :bnext<CR>
 " tabs
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
-" blank lines
-nnoremap <Enter> o<esc>
-nnoremap <S-Enter> O<esc>
 
 """"""""""""""""""""""""""""""""""""""""
 " INSERT MODE
