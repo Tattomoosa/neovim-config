@@ -10,7 +10,6 @@ nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
 nnoremap <leader>y gg"*yG``
-
 nnoremap <leader>w :wall<CR>
 
 """"""""""""""""""""""""""""""""""""""""
