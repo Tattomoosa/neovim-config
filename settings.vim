@@ -9,10 +9,25 @@ set mouse=a
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set noshowmode
+
+set ttyfast
+
+" coc recommended?
+set shortmess+=c
+" not working?
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " line numbers
-set relativenumber
-set number
+" set relativenumber
+" set number
 
 " cursor
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -44,7 +59,8 @@ if has("termguicolors")
   set termguicolors
 endif
 
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme apprentice
 set background=dark
 
 highlight CWD ctermfg=grey ctermbg=black guibg=#504945 guifg=#000000 gui=bold
@@ -61,16 +77,44 @@ highlight Search ctermbg=none ctermfg=red cterm=italic,underline gui=bold,underl
 highlight Normal ctermbg=NONE guibg=NONE
 
 " statusline
-set statusline=%#CWD#
-set statusline+=%{getcwd()}/
-set statusline+=%#File#
-set statusline+=%f 
+" set statusline=%#CWD#
+" set statusline+=%{getcwd()}/
+" set statusline+=%#File#
+" set statusline+=%f 
+" set statusline+=%#CWD#
+" set statusline+=%r
+" set statusline+=%m
+" set statusline+=%h
+" set statusline+=%=
+" set statusline+=%{fugitive#statusline()}
+" statusline
+set statusline=
+" dark
 set statusline+=%#CWD#
-set statusline+=%r
+" flags
 set statusline+=%m
+set statusline+=%r
 set statusline+=%h
+set statusline+=%w
+" lightgrey
+set statusline+=%#Cursor#
+" buffer number
+set statusline+=\ %n\ 
+" mode trick from https://dustri.org/b/lightweight-and-sexy-status-bar-in-vim.html
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ \ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ \ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ \ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ \ ':''}
+set statusline+=%#StatusLineIM#
+" short filename
+set statusline+=\ %f\ 
 set statusline+=%=
-set statusline+=%{fugitive#statusline()}
+set statusline+=%#CWD#
+set statusline+=%{coc#status()}\ \ 
+set statusline+=%#Cursor#
+set statusline+=\ %y\ 
+set statusline+=\ %4l,%-4c\ 
+
 " buffers
 set hidden " allows hidden unsaved buffers
 set confirm " won't quit with unsaved buffers
@@ -95,8 +139,12 @@ set linebreak breakat&vim
 set list
 set listchars=tab:\|\ ,trail:X
 
+" fix parcel issue
+set nobackup
+set nowritebackup
+
 " puts return character in numberline
 set cpo=n
 
 " enable fenced code block syntax highlighting in markdown
-let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript']
+let g:markdown_fenced_languages = ['html', 'javascript', 'js=javascript', 'rust']

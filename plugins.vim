@@ -16,47 +16,64 @@ if dein#load_state('~/.config/nvim/plugins/')
 
   " Add or remove your plugins here:
 	" movement
-	call dein#add('justinmk/vim-sneak')
+  " call dein#add('justinmk/vim-sneak')
 	call dein#add('tmhedberg/matchit')
-	" syntax
-	call dein#add('pangloss/vim-javascript')
-	call dein#add('othree/html5.vim')
-	call dein#add('posva/vim-vue')
-	call dein#add('chemzqm/vim-jsx-improve')
-	call dein#add('elzr/vim-json')
+  " docs
+  call dein#add('Shougo/echodoc')
+  " tabnine
+  " call dein#add('zxqfl/tabnine-vim')
+  " Rust
   call dein#add('rust-lang/rust.vim')
-	" call dein#add('othree/jspc.vim')
-	call dein#add('cakebaker/scss-syntax.vim')
-	" other
-	call dein#add('kien/ctrlp.vim')
-	call dein#add('scrooloose/nerdtree')
-	" git
-	call dein#add('airblade/vim-gitgutter')
-	call dein#add('tpope/vim-fugitive')
-	" changes working directory to project route
-	" call dein#add('airblade/vim-rooter')
-	" completion
-	call dein#add('Shougo/deoplete.nvim')
-	call dein#add('carlitux/deoplete-ternjs')
-	call dein#add('ternjs/tern_for_vim.git')
-	call dein#add('ervandew/supertab')
-	" call dein#add('jiangmiao/auto-pairs')
-	call dein#add('docunext/closetag.vim')
-	" display
-	call dein#add('ap/vim-css-color')
-	call dein#add('blueyed/vim-diminactive')
-	" colorschemes
-	call dein#add('morhetz/gruvbox')
-	" comments
-	" call dein#add('tpope/vim-commentary')
+  call dein#add('racer-rust/vim-racer')
+  call dein#add('dan-t/rusty-tags')
+  " call dein#add('tpope/vim-sleuth')
+  " syntax
+  call dein#add('ron-rs/ron.vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('othree/html5.vim')
+  call dein#add('posva/vim-vue')
+  call dein#add('chemzqm/vim-jsx-improve')
+  call dein#add('elzr/vim-json')
+  call dein#add('gabrielelana/vim-markdown')
+  " call dein#add('othree/jspc.vim')
+  call dein#add('cakebaker/scss-syntax.vim')
+  " other
+  call dein#add('kien/ctrlp.vim')
+  call dein#add('scrooloose/nerdtree')
+  " git
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
+  call dein#add('junegunn/goyo.vim')
+  " changes working directory to project route
+  " call dein#add('airblade/vim-rooter')
+  " completion
+  " coc
+  call dein#add('neoclide/coc.nvim', {'merge': 0, 'build': './install.sh nightly'})
+  " call dein#add('Shougo/deoplete.nvim')
+  " call dein#add('carlitux/deoplete-ternjs')
+  call dein#add('ternjs/tern_for_vim.git')
+  " call dein#add('ervandew/supertab')
+  " call dein#add('jiangmiao/auto-pairs')
+  call dein#add('docunext/closetag.vim')
+  " display
+  call dein#add('ap/vim-css-color')
+  " call dein#add('blueyed/vim-diminactive')
+  " colorschemes
+  call dein#add('morhetz/gruvbox')
+  call dein#add('romainl/apprentice')
+  " comments
+  " call dein#add('tpope/vim-commentary')
   call dein#add('scrooloose/nerdcommenter')
-	" surround
-	call dein#add('tpope/vim-surround')
-	" minimap
-	" call dein#add('severin-lemaignan/vim-minimap')
-	" formatting
-	" call dein#add('junegunn/vim-easy-align')
-	" call dein#add('chiel92/vim-autoformat')
+  " surround
+  call dein#add('tpope/vim-surround')
+  " dispatch
+  call dein#add('tpope/vim-dispatch')
+  call dein#add('radenling/vim-dispatch-neovim')
+  " minimap
+  " call dein#add('severin-lemaignan/vim-minimap')
+  " formatting
+  " call dein#add('junegunn/vim-easy-align')
+  " call dein#add('chiel92/vim-autoformat')
   " Required:
   call dein#end()
   call dein#save_state()
@@ -74,10 +91,10 @@ endif
 "End dein Scripts-------------------------
 " plugin settings
 " deoplete
-call deoplete#enable()
+"call deoplete#enable()
 " deoplete tern
-let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'
+"let g:tern_request_timeout = 1
+"let g:tern_show_signature_in_pum = '0'
 
 let g:tern#filetypes = [
 	\ 'js',
@@ -120,3 +137,14 @@ fu! NERDCommenter_after()
   endif
 endfu
 
+" Rusty-tags
+autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&"
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+
+" racer mappings
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+let g:racer_experimental_completer = 1

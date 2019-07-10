@@ -5,24 +5,28 @@
 let mapleader = "\<Space>"
 " normal mode - leader
 
+" FILETYPE
+" <leader>eh to switch to header files from code files
+autocmd FileType c,cpp nnoremap <buffer> <leader>eh :e %:r.h<CR>
+" <leader>ec to switch to code files from header files
+autocmd BufEnter,Bufnew *.h nnoremap <buffer> <leader>ec :e %:r.c*<CR>
+
+autocmd FileType rust nnoremap <buffer> <leader>!make run<CR>
+
+" easy vimrc editing
 nnoremap <leader>ev :e $MYVIMRC<CR>
 nnoremap <leader>sv :so $MYVIMRC<CR>
 
-nnoremap <leader>Y gg"+yG``
+" yanks the whole file and returns cursor to where you were
+nnoremap <leader>y gg"*yG``
 
+" saves all open buffers
 nnoremap <leader>w :wall<CR>
-
-nnoremap <leader>h <C-W>h
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>l <C-W>l
-
-nnoremap <leader>L <C-W>v
-nnoremap <leader>J <C-W>s
 
 " blank lines
 nnoremap <leader>o o<esc>
 nnoremap <leader>O O<esc>
+nnoremap <leader><leader> :nohl<CR>
 
 " toggle comments in NERDCommenter
 " nmap <leader><leader> <Plug>NERDCommenterToggle
@@ -47,6 +51,9 @@ nnoremap ]b :bnext<CR>
 " tabs
 nnoremap [t :tabp<CR>
 nnoremap ]t :tabn<CR>
+" Vim's own manual recommends this remapping since Y is by default the 
+" same as yy and that's nonsense.
+nnoremap Y y$
 
 """"""""""""""""""""""""""""""""""""""""
 " INSERT MODE
@@ -64,3 +71,10 @@ vnoremap < <gv
 vnoremap > >gv
 " plugin mappings
 map <C-n> :NERDTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""
+" TERMINAL MODE
+""""""""""""""""""""""""""""""""""""""""
+tnoremap <C-w> <C-\><C-n><C-w>
+tnoremap <C-w>: <C-\><C-n>:
+tnoremap <C-w>N <C-\><C-n>
