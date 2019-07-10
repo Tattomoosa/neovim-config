@@ -5,13 +5,6 @@
 let mapleader = "\<Space>"
 " normal mode - leader
 
-" FILETYPE
-" <leader>eh to switch to header files from code files
-autocmd FileType c,cpp nnoremap <buffer> <leader>eh :e %:r.h<CR>
-" <leader>ec to switch to code files from header files
-autocmd BufEnter,Bufnew *.h nnoremap <buffer> <leader>ec :e %:r.c*<CR>
-
-autocmd FileType rust nnoremap <buffer> <leader>!make run<CR>
 
 " easy vimrc editing
 nnoremap <leader>ev :e $MYVIMRC<CR>
@@ -35,6 +28,9 @@ nnoremap <leader><leader> :nohl<CR>
 let g:minimap_toggle='<leader>m'
 
 nnoremap va ggVG
+
+nnoremap <leader>Y gg"+yG``
+nnoremap <leader>w :wall<CR>
 
 """"""""""""""""""""""""""""""""""""""""
 " NORMAL MODE

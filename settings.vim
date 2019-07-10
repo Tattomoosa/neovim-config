@@ -4,7 +4,6 @@ filetype indent on
 
 " use mouse
 set mouse=a
-
 " tabs
 set tabstop=2
 set softtabstop=2
@@ -54,6 +53,10 @@ set noerrorbells
 
 " set terminal's title
 set title
+
+" python support ?
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = 'usr/local/bin/python3'
 
 if has("termguicolors")
   set termguicolors
