@@ -17,4 +17,3 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType c,cpp nnoremap <buffer> <leader>eh :e %:r.h<CR>
 " <leader>ec to switch to code files from header files
 autocmd BufEnter,Bufnew *.h nnoremap <buffer> <leader>ec :e %:r.c*<CR>
-

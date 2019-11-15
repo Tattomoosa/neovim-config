@@ -27,7 +27,7 @@ nnoremap <leader><leader> :nohl<CR>
 
 let g:minimap_toggle='<leader>m'
 
-nnoremap va ggVG
+nnoremap vA ggVG
 
 nnoremap <leader>Y gg"+yG``
 nnoremap <leader>w :wall<CR>
